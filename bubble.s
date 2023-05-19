@@ -8,24 +8,24 @@ outer_loop:
 addq r1 <- r1, 1
 xor r0 <- r1, r3
 # Jump if zero
-brq-5 outer_loop_exit
+brq-9 outer_loop_exit
 # r4 - j index (copy value of r1)
 addq r4 <- r1, 0
 inner_loop:
 addq r4 <- r4, 1
 xor r0 <- r4, r2
 # Jump if zero
-brq-5 outer_loop
+brq-9 outer_loop
 # r5 = *r1
 # r6 = *r4
 ldq r5 <- r1, 0
 ldq r6 <- r4, 0
-sub r0 <- r6, r5
+sub r0 <- r5, r6
 # Jump if left less then right
-brq-6 inner_loop
+brq-10 inner_loop
 stq r5 -> r4, 0
 stq r6 -> r1, 0
 # Unconditional jump
-brq-0 outer_loop
+brq-0 inner_loop
 #
 outer_loop_exit:

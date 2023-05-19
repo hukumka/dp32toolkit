@@ -22,6 +22,15 @@ pub enum ShortArithmeticsOptcode {
     Subq = 0x11,
 }
 
+impl ShortArithmeticsOptcode {
+    pub fn as_long(self) -> ArtithmeticsOptcode {
+        match self {
+            ShortArithmeticsOptcode::Addq => ArtithmeticsOptcode::Add,
+            ShortArithmeticsOptcode::Subq => ArtithmeticsOptcode::Sub,
+        }
+    }
+}
+
 #[repr(u8)]
 #[derive(Reformation, Debug, Clone, Copy, PartialEq, Eq)]
 pub enum MemOpt {
