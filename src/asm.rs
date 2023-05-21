@@ -136,7 +136,7 @@ pub fn compile_opt(ins: &[Instruction]) -> String {
         let word = compile_instruction( *instruction);
         let upper = word >> 16;
         let lower = word & 0xffff;
-        write!(&mut result, "{i}=>X\"{upper:X}_{lower:X}\",\n").unwrap();
+        write!(&mut result, "{i}=>X\"{upper:04X}_{lower:04X}\",\n").unwrap();
     }
     return result;
 }

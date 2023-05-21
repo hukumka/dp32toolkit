@@ -51,7 +51,6 @@ impl Interpreter {
             },
             Instruction::Jump { ivnz, offset } => {
                 if self.should_jump(ivnz) {
-                    println!("{:X}, {:X}, {}", ivnz, self.flags, offset);
                     self.code_pointer = self.code_pointer.wrapping_add(offset as u32);
                 } else {
                     self.code_pointer += 1;
